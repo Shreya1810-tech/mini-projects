@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="HabitFlow — A beautiful visual habit tracker to build consistency and track your daily routines month by month." />
+  <title>HabitFlow — Habit Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-container">
+    <!-- ===== LEFT SIDEBAR — TASK LIST ===== -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="brand">
+          <div class="brand-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <rect x="3" y="3" width="7" height="7" rx="2" fill="var(--accent-primary)" opacity="0.8"/>
+              <rect x="14" y="3" width="7" height="7" rx="2" fill="var(--accent-secondary)" opacity="0.6"/>
+              <rect x="3" y="14" width="7" height="7" rx="2" fill="var(--accent-tertiary)" opacity="0.7"/>
+              <rect x="14" y="14" width="7" height="7" rx="2" fill="var(--accent-quaternary)" opacity="0.5"/>
+            </svg>
+          </div>
+          <h1 class="brand-name">HabitFlow</h1>
+        </div>
+      </div>
+
+      <div class="month-display" id="monthDisplay">
+        <button class="month-nav-btn" id="prevMonthBtn" aria-label="Previous month">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        <div class="month-label">
+          <span class="month-name" id="monthName">May</span>
+          <span class="year-label" id="yearLabel">2026</span>
+        </div>
+        <button class="month-nav-btn" id="nextMonthBtn" aria-label="Next month">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+      </div>
+
+      <div class="task-section">
+        <div class="task-section-header">
+          <h2>Daily Habits</h2>
+          <button class="add-task-btn" id="addTaskBtn" aria-label="Add new habit">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          </button>
+        </div>
+
+        <!-- Add task form (hidden by default) -->
+        <div class="add-task-form" id="addTaskForm">
+          <input type="text" class="task-input" id="taskInput" placeholder="New habit name..." maxlength="40" />
+          <div class="color-picker" id="colorPicker">
+            <button class="color-dot" data-color="#6C5CE7" style="background:#6C5CE7" title="Purple"></button>
+            <button class="color-dot" data-color="#E84393" style="background:#E84393" title="Pink"></button>
+            <button class="color-dot" data-color="#00B894" style="background:#00B894" title="Green"></button>
+            <button class="color-dot" data-color="#0984E3" style="background:#0984E3" title="Blue"></button>
+            <button class="color-dot" data-color="#FDCB6E" style="background:#FDCB6E" title="Yellow"></button>
+            <button class="color-dot" data-color="#E17055" style="background:#E17055" title="Orange"></button>
+            <button class="color-dot" data-color="#D63031" style="background:#D63031" title="Red"></button>
+            <button class="color-dot" data-color="#00CEC9" style="background:#00CEC9" title="Teal"></button>
+          </div>
+          <div class="form-actions">
+            <button class="btn-cancel" id="cancelTaskBtn">Cancel</button>
+            <button class="btn-save" id="saveTaskBtn">Add Habit</button>
+          </div>
+        </div>
+
+        <ul class="task-list" id="taskList">
+          <!-- Tasks will be rendered here by JS -->
+        </ul>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="stats" id="statsContainer">
+          <div class="stat-item">
+            <span class="stat-value" id="completedToday">0</span>
+            <span class="stat-label">Done Today</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value" id="totalHabits">0</span>
+            <span class="stat-label">Total Habits</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ===== RIGHT MAIN — CALENDAR ===== -->
+    <main class="calendar-main" id="calendarMain">
+      <div class="calendar-header" id="calendarHeader">
+        <div class="day-header">Sun</div>
+        <div class="day-header">Mon</div>
+        <div class="day-header">Tue</div>
+        <div class="day-header">Wed</div>
+        <div class="day-header">Thu</div>
+        <div class="day-header">Fri</div>
+        <div class="day-header">Sat</div>
+      </div>
+      <div class="calendar-grid" id="calendarGrid">
+        <!-- Calendar cells will be rendered here by JS -->
+      </div>
+    </main>
+  </div>
+
+  <!-- Date selection tooltip -->
+  <div class="date-tooltip" id="dateTooltip">
+    <span class="tooltip-text" id="tooltipText">Select a date first</span>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
